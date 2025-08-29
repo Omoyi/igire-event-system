@@ -8,6 +8,17 @@ const Calendar = () => {
     const today = new Date();
     const month = today.getMonth() //In js months are 0 indexed & day 0 is the last day of the previous month
     const year = today.getFullYear()
+    const currentDay = today.getDate(); //Getting the current day so I can distinguish it from other days
+
+
+    //An array of dummy events with my chosen editable data structure: emojis, title and descriptions
+    const events = [
+       { id: 1, title: 'Inteview Meeting', date: 31, emoji: '👥', description: 'Discuss how I am a good fit as a facilitator.' },
+       { id: 2, title: 'Calendar Deadline', date: 30, emoji: '🚀', description: 'Final submission for the Igire calendar app.' },
+       { id: 3, title: 'Sync Call', date: 20, emoji: '📞', description: 'Review progress with the supervisor.' },
+       { id: 4, title: 'Salary Day', date: 29, emoji: '💰', description: 'Getting paid for my hard work.' },
+    ];
+
     //Most neat way but I could have used an array with actual days in months [31, 28, etc...] the 
     const monthDays = new Date(year, month +1, 0).getDate(); //year of interest:today, next month, last day of the current month
     const monthFirstDay = new Date(year, month, 1).getDay();
@@ -33,8 +44,13 @@ const Calendar = () => {
             <div className="grid grid-cols-7 gap-1">
                 {days.map((day, index) => (
                     <div key={index} 
-                    className={`p-4 border rounded-lg cursor-pointer ${
-                    day ? 'border-gray-200 hover:bg-gray-100' : 'border-transparent'
+                    className={`p-4 border rounded-lg cursor-pointer transition-colors duration-200 ease-in-out ${
+                    //distinguishing today's day for an informed calendar 
+                    day && day === currentDay && today.getMonth() === month && today.getFullYear() === year
+                      ? 'bg-pink-500 text-white font-extrabold'
+                      : day
+                        ? 'border-pink-300 hover:bg-pink-100 bg-white'
+                        : 'border-transparent'
                     }`}>
                         {day}
                     </div>
