@@ -1,6 +1,11 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Project Introduction
+
+This is a calendar event system, that is built with Next and Tailwind Css. The theme is purple and pink and it has an option for adding an emoji that closely matches with your event title/activity. I have used typescript for all my components and pages. I installed react Icons as well for the social icons in the foot
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 First, run the development server:
 
