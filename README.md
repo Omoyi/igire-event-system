@@ -1,7 +1,7 @@
 
 ## Project Introduction
 
-This is a calendar event system, that is built with Next and Tailwind Css. The theme is purple and pink and it has an option for adding an emoji that closely matches with your event title/activity. I have used typescript for all my components and pages. I installed react Icons as well for the social icons in the foot
+This is a calendar event system, that is built with Next and Tailwind Css. The theme is purple and pink and it has an option for adding an emoji that closely matches with your event title/activity. I have used typescript for all my components and pages. I installed react Icons as well for the social icons in the footer: so remember to run `npm install react-icons` if you intend to clone this.
 
 ## Getting Started
 
