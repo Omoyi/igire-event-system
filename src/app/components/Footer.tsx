@@ -1,59 +1,49 @@
+// src/app/components/Footer.tsx
+
 import React from 'react';
-import Image from 'next/image';
+import { FaLinkedin, FaGithub, FaXTwitter } from 'react-icons/fa6'; // Corrected import for React Icons
 
 const Footer = () => {
   return (
     <footer className="w-full flex justify-center py-6 px-4 bg-gradient-to-r from-fuchsia-500 to-purple-600 shadow-xl">
-      <div className="flex gap-8 flex-wrap items-center justify-center">
-        {/* LinkedIn Icon */}
+      <div className="flex gap-8 flex-wrap items-center justify-center text-white">
+        {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/your-linkedin"
+          href="https://linkedin.com/in/uwimana-rachel"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative block p-2 rounded-full transform transition-transform duration-300 hover:scale-110 overflow-hidden"
-          style={{
-            background: 'rgba(255, 255, 255, 0.2)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-          }}
+          className="flex items-center gap-2 p-2 rounded-lg transition-transform duration-300 hover:scale-110 relative group glass-container overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-2/3 h-full bg-white opacity-20 transform -skew-x-12 -translate-x-full group-hover:animate-shine"></div>
-          <Image src="/linkedin.svg" alt="LinkedIn icon" width={32} height={32} />
+          <div className="text-2xl z-10">
+            <FaLinkedin />
+          </div>
+          <span className="text-lg font-bold z-10">LinkedIn</span>
         </a>
 
-        {/* GitHub Icon */}
+        {/* GitHub */}
         <a
-          href="https://github.com/your-github"
+          href="https://github.com/omoyi"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative block p-2 rounded-full transform transition-transform duration-300 hover:scale-110 overflow-hidden"
-          style={{
-            background: 'rgba(255, 255, 255, 0.2)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-          }}
+          className="flex items-center gap-2 p-2 rounded-lg transition-transform duration-300 hover:scale-110 relative group glass-container overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-2/3 h-full bg-white opacity-20 transform -skew-x-12 -translate-x-full group-hover:animate-shine"></div>
-          <Image src="/github.svg" alt="GitHub icon" width={32} height={32} />
+          <div className="text-2xl z-10">
+            <FaGithub />
+          </div>
+          <span className="text-lg font-bold z-10">GitHub</span>
         </a>
 
-        {/* Portfolio Icon */}
+        {/* X (Twitter) */}
         <a
-          href="https://your-portfolio.com"
+          href="https://x.com/uwi_rachel"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative block p-2 rounded-full transform transition-transform duration-300 hover:scale-110 overflow-hidden"
-          style={{
-            background: 'rgba(255, 255, 255, 0.2)',
-            backdropFilter: 'blur(8px)',
-            WebkitBackdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-          }}
+          className="flex items-center gap-2 p-2 rounded-lg transition-transform duration-300 hover:scale-110 relative group glass-container overflow-hidden"
         >
-          <div className="absolute top-0 left-0 w-2/3 h-full bg-white opacity-20 transform -skew-x-12 -translate-x-full group-hover:animate-shine"></div>
-          <Image src="/portfolio.svg" alt="Portfolio icon" width={32} height={32} />
+          <div className="text-2xl z-10">
+            <FaXTwitter />
+          </div>
+          <span className="text-lg font-bold z-10">X</span>
         </a>
       </div>
     </footer>

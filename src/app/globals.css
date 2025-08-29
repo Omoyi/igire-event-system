@@ -25,7 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* New styles for the glassmorphism and shine effect */
+/* Styles for the glassmorphism and shine effect */
 @layer utilities {
   .glass-light-effect {
     background: rgba(255, 255, 255, 0.2);
@@ -46,4 +46,34 @@ body {
 
 .animate-shine {
   animation: shine 1.5s infinite;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.glass-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%) skewX(-20deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.glass-container:hover::after {
+  transform: translateX(100%) skewX(-20deg);
 }
