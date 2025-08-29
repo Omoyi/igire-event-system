@@ -53,6 +53,16 @@ const Calendar = () => {
                         : 'border-transparent'
                     }`}>
                         {day}
+                        {day && (
+                            <div className="mt-2 text-left">
+                                {events.filter(event => event.date === day).map(event => (
+                                    <div key={event.id} className="bg-pink-300 text-xs rounded-full pz-2 py-1 mb-1 flex items-center">
+                                        <span className="mr-1">{event.emoji}</span>
+                                        <span className="truncate">{event.title}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
