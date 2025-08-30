@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import EventItem from './EventItem'; 
 
 const Calendar = () => {
     //The day of the week array in short form
@@ -55,58 +56,57 @@ const Calendar = () => {
     };
     
     return (
-        <div className="p-4">
-            <div className="text-center text-xl font-bold mb-4">
-                {new Date(year, month).toLocaleString('default', {month: 'long', year: 'numeric'})}
-            </div>
-            <div className="grid grid-cols-7 gap-1 text-center font-bold text-gray-600">
-                {weekDays.map(day => (
-                    <div key={day} className="py-2">
-                        {day}
-                    </div>
+    <div className="p-4 bg-purple-200 rounded-lg shadow-lg max-w-4xl mx-auto">
+      <div className="text-center text-4xl font-extrabold mb-6 text-purple-800">
+        {new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' })}
+      </div>
+      <div className="grid grid-cols-7 gap-1 text-center font-bold text-pink-600">
+        {weekDays.map(day => (
+          <div key={day} className="py-2">
+            {day}
+          </div>
+        ))}
+      </div>
+      <div className="grid grid-cols-7 gap-1">
+        {days.map((day, index) => (
+          <div
+            key={index}
+            className={`p-4 border rounded-lg cursor-pointer transition-colors duration-200 ease-in-out ${
+              day && day === currentDay && today.getMonth() === month && today.getFullYear() === year
+                ? 'bg-pink-500 text-white font-extrabold border-pink-500'
+                : day
+                  ? 'border-pink-300 hover:bg-pink-100 bg-white'
+                  : 'border-transparent'
+            }`}
+          >
+            {day}
+            {day && (
+              <div className="mt-2 text-left">
+                {events.filter(event => event.date === day).map(event => (
+                  <EventItem key={event.id} event={event} openModal={openModal} />
                 ))}
-            </div>
-            <div className="grid grid-cols-7 gap-1">
-                {days.map((day, index) => (
-                    <div key={index} 
-                    className={`p-4 border rounded-lg cursor-pointer transition-colors duration-200 ease-in-out ${
-                    //distinguishing today's day for an informed calendar 
-                    day && day === currentDay && today.getMonth() === month && today.getFullYear() === year
-                      ? 'bg-pink-500 text-white font-extrabold'
-                      : day
-                        ? 'border-pink-300 hover:bg-pink-100 bg-white'
-                        : 'border-transparent'
-                    }`}>
-                        {day}
-                        {day && (
-                            <div className="mt-2 text-left">
-                                {events.filter(event => event.date === day).map(event => (
-                                    <div key={event.id} className="bg-pink-300 text-xs rounded-full pz-2 py-1 mb-1 flex items-center">
-                                        <span className="mr-1">{event.emoji}</span>
-                                        <span className="truncate">{event.title}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-            {isModalOpen && selectedEvent && (
-                <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
-                  <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
-                    <h2 className="text-xl font-bold mb-2">{selectedEvent.title}</h2>
-                    <p className="text-gray-600 mb-4">{selectedEvent.description}</p>
-                    <button
-                      onClick={closeModal}
-                      className="bg-pink-500 text-white font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors duration-200"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
+              </div>
             )}
+          </div>
+        ))}
+      </div>
+
+      {isModalOpen && selectedEvent && (
+        <div className="fixed inset-0 z-50 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+            <h2 className="text-xl font-bold mb-2">{selectedEvent.title}</h2>
+            <p className="text-gray-600 mb-4">{selectedEvent.description}</p>
+            <button
+              onClick={closeModal}
+              className="bg-pink-500 text-white font-bold py-2 px-4 rounded hover:bg-pink-600 transition-colors duration-200"
+            >
+              Close
+            </button>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Calendar;
